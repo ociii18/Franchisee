@@ -138,8 +138,8 @@ Name: <span id="cname">-</span>
 </div>
 
 <script>
-const BASE_URL = "https://script.google.com/macros/s/AKfycbz3usuAc1SOpXfnz9OHUs-oU9QxnKhWQyv1kBFbj3oDbT3Refq8IHYoanIhxFLXbJjIGQ/exec";
-window.onerror = function(msg, url, line, col, error) {
+const BASE_URL = "/.netlify/functions/gas";
+  window.onerror = function(msg, url, line, col, error) {
   document.body.innerHTML =
     "<h1>JS ERROR</h1><pre>" + msg + "\nLine: " + line + "</pre>";
 };
