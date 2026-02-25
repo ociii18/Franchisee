@@ -17,14 +17,11 @@ export async function handler(event) {
     });
   }
 
-  const text = await response.text();
+  let text = await response.text();
 
-  // Try to convert to JSON safely
-  let body;
-  try {
-    body = JSON.stringify(JSON.parse(text));
-  } catch (e) {
-    body = JSON.stringify({ error: text });
+  // 🔥 Remove Google security prefix if exists
+  if (text.startsWith(")]}'")) {
+    text = text.substring(4);
   }
 
   return {
@@ -33,6 +30,6 @@ export async function handler(event) {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json"
     },
-    body
+    body: text
   };
 }
